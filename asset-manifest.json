@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9c67e140.chunk.css",
+    "main.js": "/static/js/main.294a5474.chunk.js",
+    "main.js.map": "/static/js/main.294a5474.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a15e62e6.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a15e62e6.js.map",
+    "static/js/2.5858215f.chunk.js": "/static/js/2.5858215f.chunk.js",
+    "static/js/2.5858215f.chunk.js.map": "/static/js/2.5858215f.chunk.js.map",
+    "static/js/3.7ea0128d.chunk.js": "/static/js/3.7ea0128d.chunk.js",
+    "static/js/3.7ea0128d.chunk.js.map": "/static/js/3.7ea0128d.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.9c67e140.chunk.css.map": "/static/css/main.9c67e140.chunk.css.map",
+    "static/js/2.5858215f.chunk.js.LICENSE.txt": "/static/js/2.5858215f.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/profile__edit-button.6c7bf054.svg",
+    "static/media/logo-mesto.b8ac1065.svg": "/static/media/logo-mesto.b8ac1065.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a15e62e6.js",
+    "static/js/2.5858215f.chunk.js",
+    "static/css/main.9c67e140.chunk.css",
+    "static/js/main.294a5474.chunk.js"
+  ]
+}
