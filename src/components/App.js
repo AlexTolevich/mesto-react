@@ -36,7 +36,7 @@ function App() {
   }
 
   return (
-    <div className="root"><>
+    <div className="root">
       <Header/>
 
       <Main
@@ -156,7 +156,7 @@ function App() {
         isOpen={false}
         onClose={closeAllPopups}
         buttonTitle="Да"
-      /> </>
+      />
     </div>
   );
 }

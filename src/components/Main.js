@@ -61,6 +61,7 @@ function Main(props) {
               link={card.link}
               name={card.name}
               likes={card.likes.length}
+              card={card}
               onCardClick={props.onCardClick}
             />
           )
