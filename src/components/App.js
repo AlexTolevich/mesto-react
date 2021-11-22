@@ -17,15 +17,15 @@ function App() {
   }
 
   function handleEditAvatarClick() {
-    setIsEditProfilePopupOpen(true)
+    setIsEditAvatarPopupOpen(true)
   }
 
   function handleEditProfileClick() {
-    setIsAddPlacePopupOpen(true)
+    setIsEditProfilePopupOpen(true)
   }
 
   function handleAddPlaceClick() {
-    setIsEditAvatarPopupOpen(true)
+    setIsAddPlacePopupOpen(true)
   }
 
   function closeAllPopups() {
@@ -58,38 +58,34 @@ function App() {
         title="Редактировать профиль"
         buttonTitle="Сохранить"
         isOpen={isEditProfilePopupOpen}
-        onClose={closeAllPopups}
-        children={
-          <>
-            <input
-              aria-label="Ваше имя"
-              type="text"
-              name="popup_name"
-              id="popup-name"
-              className="popup__input popup__input_is_name"
-              required
-              placeholder="Введите Ваше имя"
-              value=""
-              minLength="2"
-              maxLength="40"
-            />
-            <span id="popup-name-error" className="popup__error"/>
-            <input
-              aria-label="Род деятельности"
-              type="text"
-              name="popup_job"
-              id="popup-job"
-              className="popup__input popup__input_is_job"
-              required
-              placeholder="Введите Ваш род деятельности"
-              value=""
-              minLength="2"
-              maxLength="200"
-            />
-            <span id="popup-job-error" className="popup__error"/>
-          </>
-        }
-      />
+        onClose={closeAllPopups}>
+        <input
+          aria-label="Ваше имя"
+          type="text"
+          name="popup_name"
+          id="popup-name"
+          className="popup__input popup__input_is_name"
+          required
+          placeholder="Введите Ваше имя"
+          value=""
+          minLength="2"
+          maxLength="40"
+        />
+        <span id="popup-name-error" className="popup__error"/>
+        <input
+          aria-label="Род деятельности"
+          type="text"
+          name="popup_job"
+          id="popup-job"
+          className="popup__input popup__input_is_job"
+          required
+          placeholder="Введите Ваш род деятельности"
+          value=""
+          minLength="2"
+          maxLength="200"
+        />
+        <span id="popup-job-error" className="popup__error"/>
+      </PopupWithForm>
 
       <PopupWithForm
         name="add"
@@ -97,35 +93,32 @@ function App() {
         buttonTitle="Создать"
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
-        children={
-          <>
-            <input
-              aria-label="Название фото"
-              type="text"
-              name="name"
-              id="place-name"
-              className="popup__input popup__input_is_place-name"
-              required
-              placeholder="Название"
-              value=""
-              minLength="2"
-              maxLength="30"
-            />
-            <span id="place-name-error" className="popup__error"/>
-            <input
-              aria-label="Ссылка на картинку"
-              type="url"
-              name="link"
-              id="place-img-link"
-              className="popup__input popup__input_is_img-link"
-              required
-              placeholder="Ссылка на картинку"
-              value=""
-            />
-            <span id="place-img-link-error" className="popup__error"/>
-          </>
-        }
-      />
+      >
+        <input
+          aria-label="Название фото"
+          type="text"
+          name="name"
+          id="place-name"
+          className="popup__input popup__input_is_place-name"
+          required
+          placeholder="Название"
+          value=""
+          minLength="2"
+          maxLength="30"
+        />
+        <span id="place-name-error" className="popup__error"/>
+        <input
+          aria-label="Ссылка на картинку"
+          type="url"
+          name="link"
+          id="place-img-link"
+          className="popup__input popup__input_is_img-link"
+          required
+          placeholder="Ссылка на картинку"
+          value=""
+        />
+        <span id="place-img-link-error" className="popup__error"/>
+      </PopupWithForm>
 
       <PopupWithForm
         name="avatar"
@@ -133,22 +126,19 @@ function App() {
         buttonTitle="Сохранить"
         isOpen={isEditAvatarPopupOpen}
         onClose={closeAllPopups}
-        children={
-          <>
-            <input
-              aria-label="Ссылка на аватар"
-              type="url"
-              name="avatar"
-              id="avatar-img-link"
-              className="popup__input popup__input_type_avatar-link"
-              required
-              placeholder="Ссылка на аватар"
-              value=""
-            />
-            <span id="avatar-img-link-error" className="popup__error"/>
-          </>
-        }
-      />
+      >
+        <input
+          aria-label="Ссылка на аватар"
+          type="url"
+          name="avatar"
+          id="avatar-img-link"
+          className="popup__input popup__input_type_avatar-link"
+          required
+          placeholder="Ссылка на аватар"
+          value=""
+        />
+        <span id="avatar-img-link-error" className="popup__error"/>
+      </PopupWithForm>
 
       <PopupWithForm
         name="confirmation"
