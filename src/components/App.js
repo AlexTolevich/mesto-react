@@ -67,7 +67,6 @@ function App() {
           className="popup__input popup__input_is_name"
           required
           placeholder="Введите Ваше имя"
-          value=""
           minLength="2"
           maxLength="40"
         />
@@ -80,7 +79,6 @@ function App() {
           className="popup__input popup__input_is_job"
           required
           placeholder="Введите Ваш род деятельности"
-          value=""
           minLength="2"
           maxLength="200"
         />
@@ -102,7 +100,6 @@ function App() {
           className="popup__input popup__input_is_place-name"
           required
           placeholder="Название"
-          value=""
           minLength="2"
           maxLength="30"
         />
@@ -115,7 +112,6 @@ function App() {
           className="popup__input popup__input_is_img-link"
           required
           placeholder="Ссылка на картинку"
-          value=""
         />
         <span id="place-img-link-error" className="popup__error"/>
       </PopupWithForm>
@@ -135,7 +131,6 @@ function App() {
           className="popup__input popup__input_type_avatar-link"
           required
           placeholder="Ссылка на аватар"
-          value=""
         />
         <span id="avatar-img-link-error" className="popup__error"/>
       </PopupWithForm>
