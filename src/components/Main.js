@@ -2,7 +2,7 @@ import {api} from '../utils/api.js';
 import React from 'react';
 import Card  from './Card.js';
 
-function Main(props) {
+function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick}) {
   const [userName, setUserName] = React.useState('');
   const [userDescription, setUserDescription] = React.useState('');
   const [userAvatar, setUserAvatar] = React.useState('');
@@ -31,7 +31,7 @@ function Main(props) {
             src={userAvatar}
             alt="аватар профиля"
             className="profile__avatar"
-            onClick={props.onEditAvatar}
+            onClick={onEditAvatar}
           />
           <div className="profile__info">
             <div className="profile__name-container">
@@ -40,7 +40,7 @@ function Main(props) {
                 aria-label="Редактировать профиль"
                 type="button"
                 className="profile__edit-button"
-                onClick={props.onEditProfile}
+                onClick={onEditProfile}
               />
             </div>
             <p className="profile__job">{userDescription}</p>
@@ -50,7 +50,7 @@ function Main(props) {
           aria-label="Добавить карточку"
           type="button"
           className="profile__add-button"
-          onClick={props.onAddPlace}
+          onClick={onAddPlace}
         />
       </section>
 
@@ -62,7 +62,7 @@ function Main(props) {
               name={card.name}
               likes={card.likes.length}
               card={card}
-              onCardClick={props.onCardClick}
+              onCardClick={onCardClick}
             />
           )
         )}
