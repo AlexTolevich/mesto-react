@@ -1,6 +1,6 @@
-function ImagePopup({card, onClose}) {
+function ImagePopup({card, onClose, onCloseOverlayClick}) {
     return (
-        <div className={`popup popup_type_full-screen ${card ? 'popup_opened' : ''}`}>
+        <div className={`popup popup_type_full-screen ${card ? 'popup_opened' : ''}`} onClick={onCloseOverlayClick}>
             <div className="popup__image-container">
                 <img src={card ? card.link : ''} alt={card ? card.name : ''} className="popup__image"/>
                 <p className="popup__image-caption">{card ? card.name : ''}</p>

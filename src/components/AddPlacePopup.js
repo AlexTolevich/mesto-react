@@ -1,7 +1,7 @@
 import PopupWithForm from './PopupWithForm.js';
 import React         from 'react';
 
-function AddPlacePopup({isOpen, onClose, onAddPlace}) {
+function AddPlacePopup({isOpen, onClose, onAddPlace, onCloseOverlayClick}) {
     const [nameCard, setNameCard] = React.useState('')
     const [linkCard, setLinkCard] = React.useState('')
 
@@ -37,6 +37,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
             isOpen={isOpen}
             onClose={onClose}
             onSubmit={handleSubmit}
+            onCloseOverlayClick={onCloseOverlayClick}
         >
             <input
                 aria-label="Название фото"

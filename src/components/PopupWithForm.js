@@ -1,6 +1,6 @@
-function PopupWithForm({name, title, buttonTitle, isOpen, onClose, onSubmit, children}) {
+function PopupWithForm({name, title, buttonTitle, isOpen, onClose, onSubmit, children, onCloseOverlayClick}) {
     return (
-        <div className={`popup popup_type_${name} ${isOpen && 'popup_opened'}`}>
+        <div className={`popup popup_type_${name} ${isOpen && 'popup_opened'}`} onClick={onCloseOverlayClick}>
             <div className={`popup__container popup__container_type_${name}`}>
                 <button
                     aria-label="Закрыть окно подтверждения"

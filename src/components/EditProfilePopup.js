@@ -2,7 +2,7 @@ import PopupWithForm        from './PopupWithForm.js';
 import React                from 'react';
 import {CurrentUserContext} from '../contexts/CurrentUserContext.js';
 
-function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
+function EditProfilePopup({isOpen, onClose, onUpdateUser, onCloseOverlayClick}) {
     const currentUser = React.useContext(CurrentUserContext);
     const [name, setName] = React.useState('');
     const [description, setDescription] = React.useState('');
@@ -40,6 +40,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
             isOpen={isOpen}
             onClose={onClose}
             onSubmit={handleSubmit}
+            onCloseOverlayClick={onCloseOverlayClick}
         >
             <input
                 aria-label="Ваше имя"

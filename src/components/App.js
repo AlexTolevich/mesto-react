@@ -100,6 +100,12 @@ function App() {
             })
     }
 
+   function closeOverlayClick(event) {
+        if(event.target.classList.contains('popup_opened')) {
+            closeAllPopups()
+        }
+   }
+
     function closeAllPopups() {
         setIsAddPlacePopupOpen(false);
         setIsEditAvatarPopupOpen(false);
@@ -127,30 +133,36 @@ function App() {
                 <ImagePopup
                     card={selectedCard}
                     onClose={closeAllPopups}
+                    onCloseOverlayClick={closeOverlayClick}
                 />
 
                 <EditProfilePopup
                     isOpen={isEditProfilePopupOpen}
                     onClose={closeAllPopups}
                     onUpdateUser={handleUpdateUser}
+                    onCloseOverlayClick={closeOverlayClick}
                 />
 
                 <AddPlacePopup
                     isOpen={isAddPlacePopupOpen}
                     onClose={closeAllPopups}
                     onAddPlace={handleAddPlaceSubmit}
+                    onCloseOverlayClick={closeOverlayClick}
                 />
 
                 <EditAvatarPopup
                     isOpen={isEditAvatarPopupOpen}
                     onClose={closeAllPopups}
-                    onUpdateAvatar={handleUpdateAvatar}/>
+                    onUpdateAvatar={handleUpdateAvatar}
+                    onCloseOverlayClick={closeOverlayClick}
+                />
 
                 <PopupWithForm
                     name="confirmation"
                     title="Вы уверены?"
                     isOpen={false}
                     onClose={closeAllPopups}
+                    onCloseOverlayClick={closeOverlayClick}
                     buttonTitle="Да"
                 />
             </div>

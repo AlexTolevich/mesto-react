@@ -1,7 +1,7 @@
 import PopupWithForm from './PopupWithForm.js';
 import React         from 'react';
 
-function EditAvatarPopup({isOpen, onClose, onUpdateAvatar}) {
+function EditAvatarPopup({isOpen, onClose, onUpdateAvatar, onCloseOverlayClick}) {
     const avatarRef = React.useRef();
 
     function handleSubmit(e) {
@@ -22,6 +22,7 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar}) {
             isOpen={isOpen}
             onClose={onClose}
             onSubmit={handleSubmit}
+            onCloseOverlayClick={onCloseOverlayClick}
         >
             <input
                 aria-label="Ссылка на аватар"
