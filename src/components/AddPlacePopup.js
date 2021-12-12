@@ -23,10 +23,8 @@ function AddPlacePopup({isOpen, onClose, onAddPlace, onCloseOverlayClick}) {
 
 
     React.useEffect(() => {
-        if (isOpen) {
-            setNameCard('');
-            setLinkCard('');
-        }
+        setNameCard('');
+        setLinkCard('');
     }, [isOpen]);
 
     return (

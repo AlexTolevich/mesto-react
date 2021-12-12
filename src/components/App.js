@@ -27,6 +27,9 @@ function App() {
             .updateCardLike(card._id, !isLiked)
             .then((newCard) => {
                 setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+            })
+            .catch((err) => {
+                console.log(`Ошибка изменения данных лайка: ${err}`);
             });
     }
 
@@ -34,6 +37,9 @@ function App() {
         api
             .deleteCard(delCard._id)
             .then(() => setCards(cards.filter(currentCard => currentCard._id !== delCard._id)))
+            .catch((err) => {
+                console.log(`Ошибка удаления карточки: ${err}`);
+            });
     }
 
     React.useEffect(() => {
@@ -46,6 +52,7 @@ function App() {
             .catch((err) => {
                 console.log(`Ошибка загрузки данных: ${err}`);
             });
+
         function handleEscClose(event) {
             if (event.key === 'Escape') {
                 closeAllPopups()
