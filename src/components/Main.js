@@ -1,21 +1,33 @@
-import {api} from '../utils/api.js';
-import React from 'react';
-import Card  from './Card.js';
+import {api}                from '../utils/api.js';
+import React                from 'react';
+import Card                 from './Card.js';
+import {CurrentUserContext} from '../contexts/CurrentUserContext.js';
 
 function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick}) {
-  const [userName, setUserName] = React.useState('');
-  const [userDescription, setUserDescription] = React.useState('');
-  const [userAvatar, setUserAvatar] = React.useState('');
   const [cards, setCards] = React.useState([]);
+  const currentUser = React.useContext(CurrentUserContext);
+
+  function handleCardLike(card) {
+    // Снова проверяем, есть ли уже лайк на этой карточке
+    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    // Отправляем запрос в API и получаем обновлённые данные карточки
+    api
+      .updateCardLike(card._id, !isLiked)
+      .then((newCard) => {
+      setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+    });
+  }
+
+  function handleCardDelete(card) {
+    api
+      .deleteCard(card._id)
+      .then(setCards(cards.filter(c => c._id !== card._id)))
+  }
 
   React.useEffect(() => {
     api
-      .getAppInfo()
-      .then(([userInfoRes, cardListRes]) => {
-        // userId.id = userInfoRes._id;
-        setUserName(userInfoRes.name);
-        setUserDescription(userInfoRes.about);
-        setUserAvatar(userInfoRes.avatar)
+      .getInitialCards()
+      .then((cardListRes) => {
         setCards(cardListRes)
       })
       .catch((err) => {
@@ -28,14 +40,14 @@ function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick}) {
       <section className="profile">
         <div className="profile__container">
           <img
-            src={userAvatar}
+            src={currentUser.avatar}
             alt="аватар профиля"
             className="profile__avatar"
             onClick={onEditAvatar}
           />
           <div className="profile__info">
             <div className="profile__name-container">
-              <h1 className="profile__name">{userName}</h1>
+              <h1 className="profile__name">{currentUser.name}</h1>
               <button
                 aria-label="Редактировать профиль"
                 type="button"
@@ -43,7 +55,7 @@ function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick}) {
                 onClick={onEditProfile}
               />
             </div>
-            <p className="profile__job">{userDescription}</p>
+            <p className="profile__job">{currentUser.about}</p>
           </div>
         </div>
         <button
@@ -60,9 +72,11 @@ function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick}) {
               key={card._id}
               link={card.link}
               name={card.name}
-              likes={card.likes.length}
+              counterLikes={card.likes.length}
               card={card}
               onCardClick={onCardClick}
+              onCardLike={handleCardLike}
+              onCardDelete={handleCardDelete}
             />
           )
         )}

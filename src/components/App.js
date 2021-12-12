@@ -1,9 +1,11 @@
-import React         from 'react';
-import Header        from './Header.js';
-import Main          from './Main.js';
-import Footer        from './Footer.js';
-import PopupWithForm from './PopupWithForm.js';
-import ImagePopup    from './ImagePopup.js';
+import React                from 'react';
+import Header               from './Header.js';
+import Main                 from './Main.js';
+import Footer               from './Footer.js';
+import PopupWithForm        from './PopupWithForm.js';
+import ImagePopup           from './ImagePopup.js';
+import {api}                from '../utils/api.js';
+import {CurrentUserContext} from '../contexts/CurrentUserContext.js';
 
 
 function App() {
@@ -11,6 +13,18 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
+  const [currentUser, setCurrentUser] = React.useState({});
+
+  React.useEffect(() => {
+    api
+      .getUserInfo()
+      .then((userInfoRes) => {
+        setCurrentUser(userInfoRes)
+      })
+      .catch((err) => {
+        console.log(`Ошибка загрузки данных: ${err}`);
+      });
+  }, [])
 
   function handleCardClick(card) {
     setSelectedCard(card)
@@ -36,6 +50,7 @@ function App() {
   }
 
   return (
+    <CurrentUserContext.Provider value={currentUser}>
     <div className="root">
       <Header/>
 
@@ -143,6 +158,7 @@ function App() {
         buttonTitle="Да"
       />
     </div>
+    </CurrentUserContext.Provider>
   );
 }
 
