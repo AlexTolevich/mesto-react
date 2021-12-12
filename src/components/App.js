@@ -45,7 +45,15 @@ function App() {
             })
             .catch((err) => {
                 console.log(`Ошибка загрузки данных: ${err}`);
-            })
+            });
+        function handleEscClose(event) {
+            if (event.key === 'Escape') {
+                closeAllPopups()
+            }
+        }
+        document.addEventListener('keyup', handleEscClose)
+        return () =>
+            document.removeEventListener('keyup', handleEscClose)
     }, [])
 
     function handleCardClick(card) {
@@ -100,11 +108,11 @@ function App() {
             })
     }
 
-   function closeOverlayClick(event) {
-        if(event.target.classList.contains('popup_opened')) {
+    function closeOverlayClick(event) {
+        if (event.target.classList.contains('popup_opened')) {
             closeAllPopups()
         }
-   }
+    }
 
     function closeAllPopups() {
         setIsAddPlacePopupOpen(false);
