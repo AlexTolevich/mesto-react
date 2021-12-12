@@ -1,39 +1,10 @@
-import {api}                from '../utils/api.js';
 import React                from 'react';
 import Card                 from './Card.js';
-import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
+import {CurrentUserContext} from '../contexts/CurrentUserContext.js';
 
-function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick}) {
-    const [cards, setCards] = React.useState([]);
+function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick, cards, onCardLike, onCardDelete}) {
+
     const currentUser = React.useContext(CurrentUserContext);
-
-    function handleCardLike(card) {
-        // Снова проверяем, есть ли уже лайк на этой карточке
-        const isLiked = card.likes.some(i => i._id === currentUser._id);
-        // Отправляем запрос в API и получаем обновлённые данные карточки
-        api
-            .updateCardLike(card._id, !isLiked)
-            .then((newCard) => {
-                setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-            });
-    }
-
-    function handleCardDelete(delCard) {
-        api
-            .deleteCard(delCard._id)
-            .then(() => setCards(cards.filter(currentCard => currentCard._id !== delCard._id)))
-    }
-
-    React.useEffect(() => {
-        api
-            .getInitialCards()
-            .then((cardListRes) => {
-                setCards(cardListRes)
-            })
-            .catch((err) => {
-                console.log(`Ошибка загрузки данных: ${err}`);
-            });
-    }, [])
 
     return (
         <main className="content">
@@ -75,8 +46,8 @@ function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick}) {
                             counterLikes={card.likes.length}
                             card={card}
                             onCardClick={onCardClick}
-                            onCardLike={handleCardLike}
-                            onCardDelete={handleCardDelete}
+                            onCardLike={onCardLike}
+                            onCardDelete={onCardDelete}
                         />
                     )
                 )}

@@ -14,15 +14,15 @@ function Card({link, name, counterLikes, card, onCardClick, onCardLike, onCardDe
     const cardLikeButtonClassName = (`element__like ${isLiked && 'element__like_active'}`);
 
     function handleCardClick() {
-        onCardClick(card)
+        onCardClick(card);
     }
 
     function handleLikeClick() {
-        onCardLike(card)
+        onCardLike(card);
     }
 
     function handleDeleteClick() {
-        onCardDelete(card)
+        onCardDelete(card);
     }
 
 

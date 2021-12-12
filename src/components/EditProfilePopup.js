@@ -8,11 +8,11 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
     const [description, setDescription] = React.useState('');
 
     function handleChangeName(event) {
-        setName(event.target.value)
+        setName(event.target.value);
     }
 
     function handleChangeDescription(event) {
-        setDescription(event.target.value)
+        setDescription(event.target.value);
     }
 
     function handleSubmit(event) {
@@ -70,7 +70,6 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
             />
             <span id="popup-job-error" className="popup__error"/>
         </PopupWithForm>
-
     )
 }
 
