@@ -34,7 +34,7 @@
 ### Установка
 
 - клонировать проект с удаленного репозитория, для чего выполнить
-  команду `git clone git@github.com:AlexTolevich/mesto.git`
+  команду `git clone git@github.com:AlexTolevich/mesto-react.git`
 - установить модули прописанные в зависимостях package.json, для чего выполнить команду `npm install`
 
 ### Работа с проектом
